@@ -111,39 +111,49 @@ static id<SocialLibTwitterMessage> twitterShareMsg;
             }else{
                 if (type == SocialLibTwitterMessageTypeText) {
                     NSString *tweetConent = obj.socialLibTweetContent;
-                    [twitter postStatusUpdate:tweetConent
-                            inReplyToStatusID:nil
-                                     latitude:nil
-                                    longitude:nil
-                                      placeID:nil
-                           displayCoordinates:nil
-                                     trimUser:nil
-                                 successBlock:^(NSDictionary *status) {
-                                     successBlock(status);
-                                 }
-                                   errorBlock:^(NSError *error) {
-                                       failureBlock(nil, error);
-                                   }];
+                    [twitter postStatusesUpdate:tweetConent inReplyToStatusID:nil latitude:nil longitude:nil placeID:nil displayCoordinates:nil trimUser:nil autoPopulateReplyMetadata:nil excludeReplyUserIDsStrings:nil attachmentURLString:nil useExtendedTweetMode:nil successBlock:^(NSDictionary *status) {
+                        successBlock(status);
+                    } errorBlock:^(NSError *error) {
+                        failureBlock(nil, error);
+                    }];
+//                    [twitter postStatusUpdate:tweetConent
+//                            inReplyToStatusID:nil
+//                                     latitude:nil
+//                                    longitude:nil
+//                                      placeID:nil
+//                           displayCoordinates:nil
+//                                     trimUser:nil
+//                                 successBlock:^(NSDictionary *status) {
+//                                     successBlock(status);
+//                                 }
+//                                   errorBlock:^(NSError *error) {
+//                                       failureBlock(nil, error);
+//                                   }];
                 }else if (type == SocialLibTwitterMessageTypeImage) {
                     NSString *tweetConent = obj.socialLibTweetContent;
                     NSArray *images;
                     if ([obj respondsToSelector:@selector(socialLibImages)] && obj.socialLibImages.count != 0) {
                         images = obj.socialLibImages;
-                        [twitter postStatusUpdate:tweetConent
-                                   mediaDataArray:images
-                                possiblySensitive:nil
-                                inReplyToStatusID:nil
-                                         latitude:nil
-                                        longitude:nil
-                                          placeID:nil
-                               displayCoordinates:nil
-                              uploadProgressBlock:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite) {
-                                  
-                              } successBlock:^(NSDictionary *status) {
-                                  successBlock(status);
-                              } errorBlock:^(NSError *error) {
-                                  failureBlock(nil, error);
-                              }];
+//                        [twitter postStatusUpdate:tweetConent
+//                                   mediaDataArray:images
+//                                possiblySensitive:nil
+//                                inReplyToStatusID:nil
+//                                         latitude:nil
+//                                        longitude:nil
+//                                          placeID:nil
+//                               displayCoordinates:nil
+//                              uploadProgressBlock:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite) {
+//                                  
+//                              } successBlock:^(NSDictionary *status) {
+//                                  successBlock(status);
+//                              } errorBlock:^(NSError *error) {
+//                                  failureBlock(nil, error);
+//                              }];
+                        [twitter postStatusesUpdate:tweetConent inReplyToStatusID:nil latitude:nil longitude:nil placeID:nil displayCoordinates:nil trimUser:nil autoPopulateReplyMetadata:nil excludeReplyUserIDsStrings:nil attachmentURLString:nil useExtendedTweetMode:nil successBlock:^(NSDictionary *status) {
+                            successBlock(status);
+                        } errorBlock:^(NSError *error) {
+                            failureBlock(nil, error);
+                        }];
                     }else{
                     
                     }
